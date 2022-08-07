@@ -97,5 +97,23 @@ class Motor:
             self.step2()
             self.step1()
     
+    def microstep(self, seconds):
+        GPIO.output(self.in3, True);
+        sleep(seconds / 8.0);
+        GPIO.output(self.in4, False);
+        sleep(seconds / 8.0);
+        GPIO.output(self.in2, True);
+        sleep(seconds / 8.0);
+        GPIO.output(self.in3, False);
+        sleep(seconds / 8.0);
+        GPIO.output(self.in1, True);
+        sleep(seconds / 8.0);
+        GPIO.output(self.in2, False);
+        sleep(seconds / 8.0);
+        GPIO.output(self.in4, True);
+        sleep(seconds / 8.0);
+        GPIO.output(self.in1, False);
+        sleep(seconds / 8.0);
+    
     def cleanup(self):
         GPIO.cleanup()
